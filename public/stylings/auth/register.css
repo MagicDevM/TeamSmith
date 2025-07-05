@@ -17,5 +17,56 @@ html {
   max-width: 2000px;
   margin: 0 auto;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, deepskyblue 50%, yellow);
   /* Ensures the container takes the full height of the viewport */
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  width: 70%;
+  padding: 15px 15px 70px 15px;
+  border: 3px solid white;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  color: white;
+}
+
+.auth-container h1 {
+  font-size: 2.2em;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.input-container input {
+  width: 90%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: white;
+  padding: 10px 15px 10px 15px;
+}
+
+.input-container input::placeholder {
+  color: white;
+  font-weight: 500;
 }

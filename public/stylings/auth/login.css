@@ -17,5 +17,6 @@ html {
   max-width: 2000px;
   margin: 0 auto;
   height: 100vh;
+  background-color: deepskyblue;
   /* Ensures the container takes the full height of the viewport */
 }
