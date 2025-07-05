@@ -70,3 +70,60 @@ html {
   color: white;
   font-weight: 500;
 }
+
+.tos-container {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  font-size: 14.5px;
+  margin: -15px 0px 15px;
+  line-height: 0;
+}
+
+.tos-container label input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: white;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 4.5px;
+}
+.tos-container label input[type="checkbox"]:checked {
+  background-color: white; /* Change background color */
+}
+
+.tos-container label input[type="checkbox"]:checked::before {
+  content: "✔"; /* Custom checkmark */
+  font-size: 12px;
+  position: absolute;
+  padding: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tos-container a {
+  color: white;
+  text-decoration: none;
+}
+.tos-container a:hover {
+  text-decoration: underline;
+}
+
+.link-container {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+.link-container p a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-container p a:hover {
+  text-decoration: underline;
+}
