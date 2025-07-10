@@ -135,7 +135,6 @@ html {
 }
 
 .tos-container label input[type="checkbox"] {
-  appearance: none;
   width: 20px;
   height: 20px;
   border-radius: 4px;
@@ -145,24 +144,12 @@ html {
   cursor: pointer;
   margin-right: 4.5px;
 }
-.tos-container label input[type="checkbox"]:checked {
-  background-color: white; /* Change background color */
-}
-
-.tos-container label input[type="checkbox"]:checked::before {
-  content: "✔"; /* Custom checkmark */
-  font-size: 12px;
-  position: absolute;
-  padding: 2px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 .tos-container a {
   color: white;
   text-decoration: none;
 }
+
 .tos-container a:hover {
   text-decoration: underline;
 }
