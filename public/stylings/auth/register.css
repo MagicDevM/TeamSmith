@@ -40,6 +40,44 @@ html {
   padding: 5px;
 }
 
+#errorDiv {
+  background-color: red;
+  height: 80px;
+  padding: 5px;
+  width: 100%;
+  border-radius: 15px;
+  display: none;
+  flex-direction: row;
+  justify-self: center;
+  color: white;
+  align-items: center;
+  overflow: hidden;
+}
+
+.linefordiv {
+  align-self: center;
+  height: 80%;
+  margin-right: 10px;
+  width: 1px;
+  background: #DCDCDC;
+}
+
+#errorDiv p {
+  max-height: 100%;
+  white-space: wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#errorDiv i {
+  font-size: 3em;
+  margin: 15px 10px 15px 5px;
+  align-self: center;
+}
+
 .input-container {
   position: relative;
   display: flex;

@@ -1,6 +1,6 @@
 var passwordIcon = document.querySelectorAll('.passwordIcon');
-var passwordInput = document.getElementById('passwordInput');
-var confirmPasswordInput = document.getElementById('confirmPasswordInput');
+var passwordInput = document.getElementById('password');
+var confirmPasswordInput = document.getElementById('confirmPassword');
 passwordIcon.forEach((icon, index) => {
   icon.addEventListener('click', function() {
     if (index === 0) {

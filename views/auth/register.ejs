@@ -14,30 +14,36 @@
   <div class="container">
     <div class="auth-container">
       <h1>Register</h1>
+      <div id="errorDiv">
+        <i class='bx bx-alert-triangle'></i>
+        <div class="linefordiv"></div>
+        <p id="errorText"></p>
+      </div>
       <div class="input-container">
         <div class="input">
-          <input type="text" name="username" placeholder="Username">
+          <input type="text" name="username" placeholder="Username" id="username">
           <i class='bx bxs-user'></i>
         </div>
         <div class="input">
-          <input type="text" name="email" placeholder="Email">
+          <input type="text" name="email" placeholder="Email" id="email">
           <i class='bx bx-envelope'></i>
         </div>
         <div class="input">
-          <input type="password" name="password" placeholder="Password" class="passwordInputs" id="passwordInput">
+          <input type="password" name="password" placeholder="Password" class="passwordInputs" id="password">
           <i class='bx bxs-lock'></i>
           <i class='bx bx-eye-slash passwordIcon'></i>
         </div>
         <div class="input">
-          <input type="password" name="confirm password" placeholder="Confirm Password" class="passwordInputs" id="confirmPasswordInput">
+          <input type="password" name="confirm password" placeholder="Confirm Password" class="passwordInputs" id="confirmPassword">
           <i class="bx bx-check-circle"></i>
           <i class='bx bx-eye-slash passwordIcon'></i>
         </div>
       </div>
       <div class="tos-container">
-      <label><input type="checkbox" id="toss" class="tos"></type>Agree to our <a href="document/tos"></a>Terms of service</label>
+        <label>
+          <input type="checkbox" id="tos" class="tos"></type>Agree to our <a href="document/tos"></a>Terms of service</label>
       </div>
-      <button class="register-btn">Register</button>
+      <button class="register-btn" id="registerButton">Register</button>
       <div class="link-container">
         <p>
       Already have an account ? <a href="/auth/login">login</a>
