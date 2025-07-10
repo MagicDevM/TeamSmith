@@ -161,15 +161,62 @@ html {
   border: none;
   outline: none;
   padding: 15px;
+  margin: 5px;
   font-weight: bold;
   font-size: 0.9em;
   border-radius: 10px;
-  border: 2px solid white;
   transition: all 0.3s;
 }
 
 .register-btn:hover {
   transform: scale(0.9);
+}
+
+#registerButtonGoogle .g {
+  color: red;
+}
+
+#registerButtonGoogle .o {
+  color: orange;
+}
+
+#registerButtonGoogle .oo {
+  color: #FFC700;
+}
+
+#registerButtonGoogle .gg {
+  color: #00FF52;
+}
+
+#registerButtonGoogle .l {
+  color: #00FF3D;
+}
+
+#registerButtonGoogle .e {
+  color: #00A9FF;
+}
+
+#registerButtonDiscord {
+  color: white;
+  background-color: royalblue;
+}
+
+.or-container {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-weight: bold;
+  gap: 3px;
+  margin: 15px;
+  justify-content: center;
+}
+
+.or-container hr {
+  outline: none;
+  height: 2px;
+  width: 100%;
+  border: 1px solid white;
+  align-self: center;
 }
 
 .link-container {
