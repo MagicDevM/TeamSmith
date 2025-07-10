@@ -156,14 +156,14 @@ html {
 
 .register-btn {
   width: 100%;
-  background-color: deepskyblue;
-  color: white;
+  background-color: white;
+  color: deepskyblue;
   border: none;
   outline: none;
   padding: 15px;
   font-weight: bold;
   font-size: 0.9em;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 2px solid white;
   transition: all 0.3s;
 }
