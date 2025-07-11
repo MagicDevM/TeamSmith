@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/stylings/auth/register.css">
   <title>Register</title>
 </head>
@@ -50,8 +51,10 @@
         <p>or</p>
         <hr/>
       </div>
-      <button class="register-btn" id="registerButtonGoogle">Continue with Google</button>
-      <button class="register-btn" id="registerButtonDiscord">Continue with Discord</button>
+      <div class="extra-options">
+        <button class="register-btn" id="registerButtonGoogle"><i class="bxl bx-google"></i>Continue with Google</button>
+        <button class="register-btn" id="registerButtonDiscord"><i class="bxl bx-discord-alt"></i>Continue with Discord</button>
+      </div>
       <div class="link-container">
         <p>
       Already have an account ? <a href="/auth/login">login</a>
