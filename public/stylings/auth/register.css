@@ -172,28 +172,9 @@ html {
   transform: scale(0.9);
 }
 
-#registerButtonGoogle .g {
-  color: red;
-}
-
-#registerButtonGoogle .o {
-  color: orange;
-}
-
-#registerButtonGoogle .oo {
-  color: #FFC700;
-}
-
-#registerButtonGoogle .gg {
-  color: #00FF52;
-}
-
-#registerButtonGoogle .l {
-  color: #00FF3D;
-}
-
-#registerButtonGoogle .e {
-  color: #00A9FF;
+#registerButtonGoogle {
+  background: linear-gradient(90deg, #EA4335, #FBBC05 , #34A853, #4285F4);
+  color: white;
 }
 
 #registerButtonDiscord {
