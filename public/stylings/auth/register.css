@@ -215,6 +215,9 @@ html {
 }
 
 @media (min-width: 800px) {
+  body, html {
+    padding: 0;
+  }
   .auth-container {
     width: 60%;
   }
