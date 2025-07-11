@@ -145,6 +145,7 @@ html {
 }
 
 .tos-container a {
+  line-height: 10px;
   color: white;
   text-decoration: none;
 }
