@@ -3,6 +3,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const connect = require('./utils/db/connector');
+const createTable = require('./utils/db/tables/createTable');
 
 //Imports in app Funcs
 const loadRoutes = require('./utils/loadRoutes');
@@ -32,6 +33,9 @@ loadRoutes(app, routesDir);
 
 //connects to the required databases
 connect(log);
+
+//Creates the users table if does not exists
+createTable(log);
 
 //Error handling System
 app.use((req, res, next) => {
