@@ -2,7 +2,6 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const mysql = require('mysql2');
 const connect = require('./utils/db/connector');
 
 //Imports in app Funcs
@@ -32,7 +31,7 @@ const routesDir = path.join(__dirname, 'routes');
 loadRoutes(app, routesDir);
 
 //connects to the required databases
-connect(mysql, log);
+connect(log);
 
 //Error handling System
 app.use((req, res, next) => {
