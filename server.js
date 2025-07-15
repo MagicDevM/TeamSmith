@@ -2,6 +2,8 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const mysql = require('mysql2');
+const connect = require('./utils/db/connector');
 
 //Imports in app Funcs
 const loadRoutes = require('./utils/loadRoutes');
@@ -29,10 +31,8 @@ const routesDir = path.join(__dirname, 'routes');
 //Loads the Routes
 loadRoutes(app, routesDir);
 
-//handles the POST requests
-app.post('/upload', (req, res) => {
-  
-})
+//connects to the required databases
+connect(mysql, log);
 
 //Error handling System
 app.use((req, res, next) => {
