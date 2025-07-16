@@ -24,6 +24,30 @@ export function setError(message) {
   }, 7000);
 };
 
+let succTimeout;
+
+export function setSucc(message) {
+  //Clears old timeouts before execution
+  clearTimeout(succTimeout);
+  //Gets required imports
+  var succText = document.getElementById('succText');
+  var succDiv = document.getElementById('succDiv');
+  //Enables the Success screen
+  succDiv.style.display = "flex";
+  //Adds success to the error screen
+  succText.textContent = message;
+  //If text content is nothing it'll just close the success screen
+  if (succText.textContent === "") {
+    succDiv.style.display = "none"
+  }
+  
+  // Start a new timeout
+  succTimeout = setTimeout(() => {
+    succDiv.style.display = 'none';
+    succText.textContent = '';
+  }, 7000);
+};
+
 export function errorLoggerRegister(username, email, password, confirmPassword, tos) {
   if (!username || !email || !password || !confirmPassword) {
     setError('Please fill in all the required info.');

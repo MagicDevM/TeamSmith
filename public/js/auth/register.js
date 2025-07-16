@@ -1,5 +1,5 @@
 import {} from '../utils/passwordViewer.js';
-import { setError, errorLoggerRegister } from '../utils/errorHandler.js';
+import { setError, setSucc, errorLoggerRegister } from '../utils/errorHandler.js';
 
 var registerButton = document.getElementById('registerButton');
 
