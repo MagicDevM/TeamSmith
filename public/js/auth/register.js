@@ -10,5 +10,7 @@ registerButton.addEventListener('click', () => {
   const confirmPassword = document.getElementById('confirmPassword').value;
   const tos = document.getElementById('tos');
   
-  errorLoggerRegister(username, email, password, confirmPassword, tos);
-}) 
+  if (!errorLoggerRegister(username, email, password, confirmPassword, tos)) {
+    return;
+  }
+});
