@@ -6,7 +6,7 @@
 
 body,
 html {
-  padding: 30px 0;
+  padding: 40px 0;
   overflow-x: hidden;
   overflow-y: scroll;
   background: linear-gradient(to right, deepskyblue 50%, yellow);
