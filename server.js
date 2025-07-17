@@ -1,7 +1,11 @@
-//Gets required modules
+//Imports required modules
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcryptjs');
+
+//Internal modules
+const db = require('./utils/db/credentials')
 const connect = require('./utils/db/connector');
 const createTable = require('./utils/db/tables/createTable');
 
@@ -24,6 +28,12 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
 
+//Enables the bodyParser extension
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: false
+}));
+
 //Route setup
 //initializes the routes directory
 const routesDir = path.join(__dirname, 'routes');
@@ -36,6 +46,53 @@ connect(log);
 
 //Creates the users table if does not exists
 createTable(log);
+
+//Registration system setup
+app.post('/register', async (req, res) => {
+  const {
+    username,
+    email,
+    password
+  } = req.body;
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    db.query('SELECT * FROM users WHERE username = ? OR email = ?', [username, email], (err, results) => {
+      if (err) {
+        log.error('Error checking user:', err);
+        return res.status(500).send('Server error. Please try again later.');
+      }
+      
+      if (results.length > 0) {
+        // Check if the email or username already exists
+        const existingUser = results[0];
+        
+        if (existingUser.email === email) {
+          return res.status(400).send('Email is already in use.');
+        }
+        if (existingUser.username === username) {
+          return res.status(400).send('Username is already taken.');
+        }
+      }
+    })
+    const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+    db.query(query,
+      [username,
+        email,
+        hashedPassword
+      ],
+      (err, results) => {
+        if (err) {
+          log.error('An error occured while registering user', err);
+          return res.status(500).send("error registering user");
+        };
+      });
+    res.send('Successfully registed!');
+  } catch (err) {
+    log.error('An error occured while hashing password.',
+      err);
+    return res.status(500).send("Something went horribly wrong!");
+  };
+});
 
 //Error handling System
 app.use((req, res, next) => {
