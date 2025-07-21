@@ -85,6 +85,20 @@ export function errorLoggerRegister(username, email, password, confirmPassword, 
     setError('You must agree with our terms of service.');
     return;
   }
-  setError('')
+  setError('');
+  return true;
+}
+
+export function errorLoggerLogin(email, password) {
+  if (!email || !password) {
+    setError('Please fill in all the required info.');
+    return;
+  }
+  
+  if (!isValidEmail(email)) {
+    setError('Email is not valid.');
+    return;
+  }
+  setError('');
   return true;
 }
