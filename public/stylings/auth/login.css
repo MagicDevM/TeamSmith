@@ -197,7 +197,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3px;
+  gap: 5px;
   width: 100%;
   background-color: white;
   color: deepskyblue;
@@ -225,13 +225,20 @@ html {
 }
 
 #loginButtonGoogle {
-  background: linear-gradient(90deg, #EA4335, #FBBC05 , #34A853, #4285F4);
+  background-color: #4285F4;
   color: white;
+}
+
+#loginButtonGoogle i {
+  background: white;
+  padding: 3px;
+  border-radius: 3px;
+  color: #4285F4;
 }
 
 #loginButtonDiscord {
   color: white;
-  background-color: royalblue;
+  background-color: #5865F2;
 }
 
 .or-container {
