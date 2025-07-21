@@ -73,21 +73,21 @@ app.post('/register', async (req, res) => {
           return res.status(400).send('Username is already taken.');
         }
       }
+      const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+      db.query(query,
+        [username,
+          email,
+          hashedPassword
+        ],
+        (err, results) => {
+          if (err) {
+            log.error('An error occured while registering user', err);
+            return res.status(500).send("error registering user");
+          };
+        }, 
+        res.send('Successfully Registered')
+      )
     })
-    const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
-    db.query(query,
-      [username,
-        email,
-        hashedPassword
-      ],
-      (err, results) => {
-        if (err) {
-          log.error('An error occured while registering user', err);
-          return res.status(500).send("error registering user");
-        };
-      });
-    res.send('Successfully registed!');
-    res.redirect('./auth/login');
   } catch (err) {
     log.error('An error occured while hashing password.',
       err);

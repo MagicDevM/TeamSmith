@@ -24,10 +24,11 @@ registerButton.addEventListener('click', () => {
   })
   .then(async (response) => {
     if (!response.ok) {
-      setError(await response.text())
+      setError(await response.text());
     }
     else {
-      setSucc(await response.text())
+      setSucc(await response.text());
+      window.location.href = "/auth/login"
     }
   })
   .catch(error => {
