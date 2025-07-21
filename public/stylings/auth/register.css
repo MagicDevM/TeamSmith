@@ -217,40 +217,6 @@ html {
   transform: scale(0.9);
 }
 
-.extra-options {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-#registerButtonGoogle {
-  background: linear-gradient(90deg, #EA4335, #FBBC05 , #34A853, #4285F4);
-  color: white;
-}
-
-#registerButtonDiscord {
-  color: white;
-  background-color: royalblue;
-}
-
-.or-container {
-  display: flex;
-  flex-direction: row;
-  color: white;
-  font-weight: bold;
-  gap: 3px;
-  margin: 15px;
-  justify-content: center;
-}
-
-.or-container hr {
-  outline: none;
-  height: 2px;
-  width: 100%;
-  border: 1px solid white;
-  align-self: center;
-}
-
 .link-container {
   font-size: 14.5px;
   text-align: center;
