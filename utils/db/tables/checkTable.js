@@ -2,7 +2,7 @@
 const db = require('../credentials');
 
 //Function starts here
-function checkTable(tableName) {
+function checkTable(tableName, log) {
   //Database matter
   const query = `
   SELECT TABLE_NAME

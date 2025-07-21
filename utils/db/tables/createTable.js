@@ -5,7 +5,7 @@ const db = require('../credentials');
 //Function starts here
 function createTable(log) {
   //Checks if table is already created
-  if (!checkTable('users')) {
+  if (!checkTable('users', log)) {
     return;
   }
   //Database matter
