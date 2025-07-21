@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylings/auth/login.css">
   <title>Login</title>
@@ -11,7 +13,49 @@
 
 <body>
   <div class="container">
-    
+    <div class="auth-container">
+      <h1>Login</h1>
+      <div id="succDiv">
+        <i class='bx bx-alert-triangle'></i>
+        <div class="linefordiv"></div>
+        <p id="succText"></p>
+      </div>
+      <div id="errorDiv">
+        <i class='bx bx-alert-triangle'></i>
+        <div class="linefordiv"></div>
+        <p id="errorText"></p>
+      </div>
+      <div class="input-container">
+        <div class="input">
+          <input type="text" name="email" placeholder="Email" id="email">
+          <i class='bx bx-envelope'></i>
+        </div>
+        <div class="input">
+          <input type="password" name="password" placeholder="Password" class="passwordInputs special" id="password">
+          <i class='bx bxs-lock'></i>
+          <i class='bx bx-eye-slash passwordIcon'></i>
+        </div>
+        <div class="rememberme">
+          <label><input type="checkbox"></type>Remember Me</label>
+          <a href="./auth/forgotPassword">Forgot Password?</a>
+        </div>
+      </div>
+      <button class="login-btn" id="loginButton">Login</button>
+      <div class="or-container">
+        <hr/>
+        <p>or</p>
+        <hr/>
+      </div>
+      <div class="extra-options">
+        <button class="login-btn" id="loginButtonGoogle"><i class="bxl bx-google"></i>Continue with Google</button>
+        <button class="login-btn" id="loginButtonDiscord"><i class="bxl bx-discord-alt"></i>Continue with Discord</button>
+      </div>
+      <div class="link-container">
+        <p>
+      Don't have an account ? <a href="/auth/register">Register</a>
+        </p>
+      </div>
+    </div>
   </div>
   <script src="/js/auth/login.js" type="module"></script>
 </body>
