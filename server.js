@@ -87,6 +87,7 @@ app.post('/register', async (req, res) => {
         };
       });
     res.send('Successfully registed!');
+    res.redirect('./auth/login');
   } catch (err) {
     log.error('An error occured while hashing password.',
       err);
