@@ -15,24 +15,27 @@ registerButton.addEventListener('click', () => {
   }
   
   fetch('/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      username, email, password }),
-  })
-  .then(async (response) => {
-    if (!response.ok) {
-      setError(await response.text());
-    }
-    else {
-      setSucc(await response.text());
-      window.location.href = "/auth/login"
-    }
-  })
-  .catch(error => {
-    setError(error);
-    console.error('Error:', error);
-  });
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        username,
+        email,
+        password
+      }),
+    })
+    .then(async (response) => {
+      if (!response.ok) {
+        setError(await response.text());
+      }
+      else {
+        setSucc(await response.text());
+        window.location.href = "/auth/login"
+      }
+    })
+    .catch(error => {
+      setError(error);
+      console.error('Error:', error);
+    });
 });

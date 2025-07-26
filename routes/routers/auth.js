@@ -3,19 +3,19 @@ const express = require('express');
 const router = express.Router()
 
 //Returns to encoding when GET is /tools
-router.get("/auth", (req, res) => {
+router.get("/", (req, res) => {
   res.redirect('/auth/login')
 });
 
-router.get("/auth/register", (req, res) => {
+router.get("/register", (req, res) => {
   res.render('auth/register')
 });
 
-router.get("/auth/login", (req, res) => {
+router.get("/login", (req, res) => {
   res.render('auth/login')
 });
 
-router.get("/auth/forgot-password", (req, res) => {
+router.get("/forgot-password", (req, res) => {
   res.render('auth/forgot-password')
 });
 

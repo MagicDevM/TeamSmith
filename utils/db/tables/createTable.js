@@ -1,6 +1,6 @@
 //Import required modules
 const checkTable = require('./checkTable');
-const db = require('../credentials');
+const {db} = require('../credentials');
 
 //Function starts here
 function createTable(log) {

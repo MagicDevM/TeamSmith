@@ -94,11 +94,6 @@ export function errorLoggerLogin(email, password) {
     setError('Please fill in all the required info.');
     return;
   }
-  
-  if (!isValidEmail(email)) {
-    setError('Email is not valid.');
-    return;
-  }
   setError('');
   return true;
 }

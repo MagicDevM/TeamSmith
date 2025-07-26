@@ -1,5 +1,5 @@
 //Import required modules
-const db = require('./credentials');
+const {db} = require('./credentials');
 
 //Function starts here
 function connect(log) {
