@@ -11,6 +11,7 @@ const { db, dbraw } = require('./utils/db/credentials');
 const connect = require('./utils/db/connector');
 const createTable = require('./utils/db/tables/createTable');
 const isAuth = require('./middleware/isAuth');
+const {statusCodeHandler, notFoundHandler} = require('./middleware/statusCodeHandler')
 
 //Router imports
 const auth = require('./routes/routers/auth');
@@ -158,34 +159,11 @@ app.post('/login', async (req, res) => {
   })
 })
 
-//Error handling System
-app.use((req, res, next) => {
-  //separate middleware for 404
-  res.status(404).render('error_handling/errorbody', { error: 'Could not find page', errorurl: req.url, errorcode: '404' })
-})
+//404 status code handling System
+app.use(notFoundHandler);
 
-//This middleware handles all other status codes
-app.use((err, req, res, next) => {
-  //Logs the error stack for debugging purposes
-  log.error(err.stack);
-  
-  //Gets the status code
-  const status = err.status || 500;
-  
-  //Sets error codes for certain status codes
-  const messages = {
-    400: 'Bad Request',
-    401: 'Unauthorized Access',
-    402: 'Forbidden',
-    404: 'Could not find page',
-    500: 'Internal server error'
-  };
-  //Gets the correct message for the status code
-  const message = messages[status];
-  
-  //Sends data to the frontend
-  res.status(status).render('error_handling/errorbody', { error: message, errorcode: status, errorurl: req.url });
-});
+//handles rest of the status codes
+app.use(statusCodeHandler);
 
 //Starts the server
 const PORT = "7777";
