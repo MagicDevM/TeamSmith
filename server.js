@@ -89,7 +89,7 @@ app.use(notFoundHandler);
 app.use(statusCodeHandler);
 
 //Starts the server
-const PORT = "7777";
+const PORT = process.env.PORT || "4591";
 app.listen(PORT, () => {
   log.info(`Website online on Port:${PORT}`);
 })
