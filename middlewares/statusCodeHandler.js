@@ -1,3 +1,5 @@
+const log = require('../utils/logger');
+
 function statusCodeHandler(err, req, res, next) {
   //Logs the error stack for debugging purposes
   log.error(err.stack);

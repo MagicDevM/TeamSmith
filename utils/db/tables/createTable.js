@@ -1,11 +1,12 @@
 //Import required modules
 const checkTable = require('./checkTable');
+const log = require('../../logger');
 const {db} = require('../credentials');
 
 //Function starts here
-function createTable(log) {
+function createTable() {
   //Checks if table is already created
-  if (!checkTable('users', log)) {
+  if (!checkTable('users')) {
     return;
   }
   //Database matter

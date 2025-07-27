@@ -1,8 +1,9 @@
 //Import required modules
 const {db} = require('./credentials');
+const log = require('../logger');
 
 //Function starts here
-function connect(log) {
+function connect() {
   //Connects to the database
   db.connect((err) => {
     //Logs errors

@@ -1,8 +1,10 @@
+const log = require('../../logger');
+
 //Import required modules
 const {db} = require('../credentials');
 
 //Function starts here
-function checkTable(tableName, log) {
+function checkTable(tableName) {
   //Database matter
   const query = `
   SELECT TABLE_NAME
