@@ -6,9 +6,8 @@
 
 body,
 html {
+  height: 100%;
   padding: 40px 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
   background: linear-gradient(to right, deepskyblue 50%, yellow);
   font-family: 'poppins', Sans-Serif;
   /* Prevents any scrolling issues */
@@ -17,8 +16,11 @@ html {
 .container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .auth-container {
@@ -272,6 +274,21 @@ html {
 
 .link-container p a:hover {
   text-decoration: underline;
+}
+
+footer {
+  position: relative;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+footer p {
+  color: whitesmoke;
+  font-weight: bold;
+  text-align: center;
+  align-self: bottom;
 }
 
 @media (min-width: 800px) {
