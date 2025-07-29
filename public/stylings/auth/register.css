@@ -8,7 +8,7 @@ body,
 html {
   height: 100%;
   padding: 40px 0;
-  background: linear-gradient(to right, deepskyblue 50%, yellow);
+  background-color: #101010;
   font-family: 'poppins', Sans-Serif;
   /* Prevents any scrolling issues */
 }
@@ -29,10 +29,10 @@ html {
   flex-direction: column;
   width: 85%;
   padding: 30px 30px;
-  border: 3px solid white;
-  backdrop-filter: blur(5px);
+  border: 1px solid whitesmoke;
   border-radius: 10px;
   color: white;
+  background-color: #181818;
 }
 
 .auth-container h1 {
@@ -201,7 +201,7 @@ html {
   gap: 3px;
   width: 100%;
   background-color: white;
-  color: deepskyblue;
+  color: black;
   border: none;
   outline: none;
   padding: 15px;
