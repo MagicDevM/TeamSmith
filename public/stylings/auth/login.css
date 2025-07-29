@@ -245,6 +245,7 @@ html {
   display: flex;
   flex-direction: row;
   color: white;
+  user-select: none;
   font-weight: bold;
   gap: 3px;
   margin: 15px;
