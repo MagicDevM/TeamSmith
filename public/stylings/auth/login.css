@@ -232,10 +232,8 @@ html {
 }
 
 #loginButtonGoogle i {
-  background: white;
-  padding: 3px;
   border-radius: 3px;
-  color: #4285F4;
+  color: white;
 }
 
 #loginButtonDiscord {
