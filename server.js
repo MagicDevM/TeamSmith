@@ -72,7 +72,6 @@ connect();
 //Creates the users table if does not exists
 createTable();
 
-
 //Route setup
 //Loads the Routes
 app.use('/home', isAuth)

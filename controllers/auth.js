@@ -19,6 +19,7 @@ async function login(req, res) {
     if (results.length === 0) return res.status(401).send('Credentials do not match with our records.');
     const user = results[0];
     
+    if (user.auth_type !== 'local') return res.status(401).send('This account is not a local account')
     try {
       const passwordMatch = await bcrypt.compare(password, user.password)
       
@@ -27,7 +28,8 @@ async function login(req, res) {
       }
       req.session.user = {
         username: user.username,
-        email: user.email
+        email: user.email,
+        auth_type: user.auth_type
       }
       return res.send('Successfully logged in!')
     } catch (err) {
@@ -63,11 +65,12 @@ async function register(req, res) {
           return res.status(400).send('Username is already taken.');
         }
       }
-      const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+      const query = 'INSERT INTO users (username, email, password, auth_type) VALUES (?, ?, ?, ?)';
       db.query(query,
         [username,
           email,
-          hashedPassword
+          hashedPassword,
+          'local'
         ],
         (err, results) => {
           if (err) {
@@ -101,7 +104,7 @@ const google = new GoogleStrategy({
       if (results.length > 0) {
         return done(null, results[0]);
       } else {
-        db.query('INSERT INTO users (username, email) VALUES(?,?)', [username, email], (err, results) => {
+        db.query('INSERT INTO users (username, email, auth_type) VALUES(?,?,?)', [username, email, 'google'], (err, results) => {
           if (err) {
             log.error(err);
             return done(err);
@@ -109,7 +112,8 @@ const google = new GoogleStrategy({
           const newUser = {
             id: results.insertId,
             username: username,
-            email: email
+            email: email,
+            auth_type: 'google'
           }
             done(null, newUser)
         })
