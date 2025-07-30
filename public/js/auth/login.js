@@ -2,6 +2,7 @@ import {} from '../utils/passwordViewer.js';
 import { setError, setSucc, errorLoggerLogin } from '../utils/../utils/errorHandler.js';
 
 var loginButton = document.getElementById('loginButton');
+var googleLoginButton = document.getElementById('loginButtonGoogle');
 
 loginButton.addEventListener('click', () => {
   const email = document.getElementById('email').value;
@@ -30,3 +31,7 @@ loginButton.addEventListener('click', () => {
       console.error('Error:', error);
     });
 });
+
+googleLoginButton.addEventListener('click', () => {
+  window.location.href = "/auth/google"
+})

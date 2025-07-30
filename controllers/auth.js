@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const log = require('../utils/logger');
 const {db} = require('../utils/db/credentials');
@@ -84,4 +85,37 @@ async function register(req, res) {
   };
 }
 
-module.exports = {login, register}
+const google = new GoogleStrategy({
+    clientID: process.env.GOOGLE_ID,
+    clientSecret: process.env.GOOGLE_SECRET,
+    callbackURL: `${process.env.URL}:${process.env.PORT}/auth/google/callback`
+  },
+  function(accessToken, refreshToken, profile, done, ) {
+    const username = profile.displayName;
+    const email = profile.emails[0].value;
+    db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+      if (err) {
+        log.error(err);
+        return done(err);
+      }
+      if (results.length > 0) {
+        return done(null, results[0]);
+      } else {
+        db.query('INSERT INTO users (username, email) VALUES(?,?)', [username, email], (err, results) => {
+          if (err) {
+            log.error(err);
+            return done(err);
+          }
+          const newUser = {
+            id: results.insertId,
+            username: username,
+            email: email
+          }
+            done(null, newUser)
+        })
+      }
+    })
+  }
+); 
+
+module.exports = {login, register, google}

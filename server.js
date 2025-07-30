@@ -1,9 +1,10 @@
 //Imports required modules
 const express = require('express');
+require('dotenv').config({ quiet: true });
 const fs = require('fs');
 const path = require('path');
 const session = require('express-session');
-require('dotenv').config({ quiet: true });
+const passport = require('passport');
 
 //Internal modules
 const { db, dbraw } = require('./utils/db/credentials');
@@ -11,7 +12,10 @@ const connect = require('./utils/db/connector');
 const createTable = require('./utils/db/tables/createTable');
 const isAuth = require('./middlewares/isAuth');
 const { statusCodeHandler, notFoundHandler } = require('./middlewares/statusCodeHandler');
-const { login, register } = require('./controllers/auth');
+const { login, register, google } = require('./controllers/auth');
+
+//runtime imports
+require('./services/googleAuth')
 
 //Router imports
 const auth = require('./routes/routers/auth');
@@ -36,7 +40,6 @@ const sessionStore = new MySQLStore(dbraw);
 
 //The Session setup details
 const sessDetails = {
-  key: process.env.SESSION_KEY || 'user_session_key',
   secret: process.env.SESSION_SECRET || 'eluminuscoisOP',
   resave: false,
   saveUninitialized: false,
@@ -50,14 +53,27 @@ const sessDetails = {
 //Setup static directorys
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'assets')));
+
+//json middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(session(sessDetails))
+
+//session enabling
+app.use(session(sessDetails));
+
+//authentication enabling
+passport.use(google);
+app.use(passport.initialize());
+app.use(passport.session());
+
+//connects to the required databases
+connect();
+
+//Creates the users table if does not exists
+createTable();
+
 
 //Route setup
-//initializes the routes directory
-const routesDir = path.join(__dirname, 'routes');
-
 //Loads the Routes
 app.use('/home', isAuth)
 app.use('/auth', auth)
@@ -71,11 +87,15 @@ app.get('/home', (req, res) => {
   res.render('home')
 })
 
-//connects to the required databases
-connect();
-
-//Creates the users table if does not exists
-createTable();
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/auth/login'
+}),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/home');
+  });
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })) 
 
 //Registration system setup
 app.post('/register', register);
