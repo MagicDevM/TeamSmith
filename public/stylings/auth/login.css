@@ -6,25 +6,33 @@
 
 body,
 html {
+  margin: 0;
+  padding: 0;
   height: 100%;
-  padding: 40px 0;
-  background-color: #101010;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
   font-family: 'poppins', Sans-Serif;
   /* Prevents any scrolling issues */
+  box-sizing: border-box;
+  background-color: #101010;
 }
 
 .container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
   height: 100vh;
+}
+
+.flexbox {
+  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 .auth-container {
-  justify-content: center;
   text-align: center;
   flex-direction: column;
   width: 85%;
@@ -33,7 +41,7 @@ html {
   background-color: #181818;
   border-radius: 10px;
   color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 2)
+  box-shadow: 0 0 10px rgba(0, 0, 0, 2);
 }
 
 .auth-container h1 {
@@ -171,6 +179,7 @@ html {
   font-size: 14.5px;
   margin: 5px 0 10px 0;
 }
+
 .rememberme label input[type="checkbox"] {
   width: 20px;
   height: 20px;
@@ -192,6 +201,7 @@ html {
   font-weight: bold;
   align-self: center;
 }
+
 .rememberme a:hover {
   text-decoration: underline;
 }
@@ -266,6 +276,7 @@ html {
   text-align: center;
   margin: 20px 0 15px;
 }
+
 .link-container p a {
   color: white;
   text-decoration: none;
@@ -292,9 +303,12 @@ footer p {
 }
 
 @media (min-width: 800px) {
-  body, html {
+
+  body,
+  html {
     padding: 0;
   }
+  
   .auth-container {
     width: 60%;
     padding: 30px 40px;
