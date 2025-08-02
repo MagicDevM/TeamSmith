@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/stylings/components/callback.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap" rel="stylesheet">
+  <title>CallBack</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="flexbox">
+      <div class="callback-container">
+        <svg class="circular" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3.5" stroke-miterlimit="10"></circle>
+        </svg>
+        <p>Fetching...</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    setTimeout(() => {
+      window.location.href = "/home"
+    }, 3000)
+  </script>
+</body>
+
+</html>

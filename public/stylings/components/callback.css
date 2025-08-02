@@ -1,0 +1,96 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-family: 'bitcount prop single', Sans-Serif;
+  /* Prevents any scrolling issues */
+  box-sizing: border-box;
+  background-color: #101010;
+  color: white;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.flexbox {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.callback-container {
+  gap: 5px;
+}
+
+.callback-container p {
+  color: springgreen;
+  font-weight: bold;
+  font-size: 1.6em;
+  margin-left: 15px;
+}
+
+.circular {
+  animation: rotate 2s linear infinite;
+  height: 90px;
+  transform-origin: center center;
+  width: 90px;
+  position: relative;
+  display: flex;
+  justify-self: center;
+}
+
+.path {
+  stroke: springgreen;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (min-width: 800px) {
+  .circular {
+    width: 145px;
+    height: 145px;
+  }
+  
+  .callback-container p {
+    font-size: 2.4em;
+  }
+}

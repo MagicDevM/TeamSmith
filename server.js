@@ -90,8 +90,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/auth/login'
 }),
   function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/home');
+    res.render('components/callback');
   });
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })) 
