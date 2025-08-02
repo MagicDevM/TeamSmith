@@ -8,15 +8,13 @@ router.get("/", (req, res) => {
 });
 
 router.get("/register", (req, res) => {
+  if (req.session.user || req.isAuthenticated()) return res.redirect('/home')
   res.render('auth/register')
 });
 
 router.get("/login", (req, res) => {
+  if (req.session.user || req.isAuthenticated()) return res.redirect('/home')
   res.render('auth/login')
-});
-
-router.get("/forgot-password", (req, res) => {
-  res.render('auth/forgot-password')
 });
 
 //Exports the router
