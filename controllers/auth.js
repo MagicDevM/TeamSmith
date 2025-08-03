@@ -1,8 +1,9 @@
 const bcrypt = require('bcryptjs');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var DiscordStrategy = require('passport-discord').Strategy;
 
 const log = require('../utils/logger');
-const {db} = require('../utils/db/credentials');
+const { db } = require('../utils/db/credentials');
 
 async function login(req, res) {
   const {
@@ -38,7 +39,7 @@ async function login(req, res) {
       return res.status(500).send("Something went horribly wrong!")
     };
   })
-} 
+}
 
 async function register(req, res) {
   const {
@@ -93,7 +94,7 @@ const google = new GoogleStrategy({
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: `${process.env.URL}:${process.env.PORT}/auth/google/callback`
   },
-  function(accessToken, refreshToken, profile, done, ) {
+  function(accessToken, refreshToken, profile, done) {
     const username = profile.displayName;
     const email = profile.emails[0].value;
     db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
@@ -115,11 +116,45 @@ const google = new GoogleStrategy({
             email: email,
             auth_type: 'google'
           }
-            done(null, newUser)
+          done(null, newUser)
         })
       }
     })
   }
-); 
+);
 
-module.exports = {login, register, google}
+const discord = new DiscordStrategy({
+    clientID: process.env.DISCORD_ID,
+    clientSecret: process.env.DISCORD_SECRET,
+    callbackURL: `${process.env.URL}:${process.env.PORT}/auth/discord/callback`,
+    scope: ['identify', 'email']
+  },
+  function(accessToken, refreshToken, profile, done) {
+    const username = profile.username;
+    const email = profile.email;
+    db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+      if (err) {
+        log.error(err);
+        return done(err);
+      }
+      if (results.length > 0) {
+        return done(null, results[0]);
+      } else {
+        db.query('INSERT INTO users (username, email, auth_type) VALUES(?,?,?)', [username, email, 'google'], (err, results) => {
+          if (err) {
+            log.error(err);
+            return done(err);
+          }
+          const newUser = {
+            id: results.insertId,
+            username: username,
+            email: email,
+            auth_type: 'discord'
+          }
+          done(null, newUser)
+        })
+      }
+    })
+  });
+
+module.exports = { login, register, google, discord}

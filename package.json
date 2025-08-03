@@ -10,6 +10,7 @@
     "fs": "^0.0.1-security",
     "mysql2": "^3.14.2",
     "passport": "^0.7.0",
+    "passport-discord": "^0.1.4",
     "passport-google-oauth20": "^2.0.0",
     "path": "^0.12.7"
   }

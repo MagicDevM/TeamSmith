@@ -3,6 +3,7 @@ import { setError, setSucc, errorLoggerLogin } from '../utils/../utils/errorHand
 
 var loginButton = document.getElementById('loginButton');
 var googleLoginButton = document.getElementById('loginButtonGoogle');
+var discordLoginButton = document.getElementById('loginButtonDiscord');
 
 loginButton.addEventListener('click', () => {
   const email = document.getElementById('email').value;
@@ -34,4 +35,7 @@ loginButton.addEventListener('click', () => {
 
 googleLoginButton.addEventListener('click', () => {
   window.location.href = "/auth/google"
+})
+discordLoginButton.addEventListener('click', () => {
+  window.location.href = "/auth/discord"
 })

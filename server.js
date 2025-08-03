@@ -12,7 +12,7 @@ const connect = require('./utils/db/connector');
 const createTable = require('./utils/db/tables/createTable');
 const isAuth = require('./middlewares/isAuth');
 const { statusCodeHandler, notFoundHandler } = require('./middlewares/statusCodeHandler');
-const { login, register, google } = require('./controllers/auth');
+const { login, register, google, discord } = require('./controllers/auth');
 
 //runtime imports
 require('./services/authManager')
@@ -63,6 +63,7 @@ app.use(session(sessDetails));
 
 //authentication enabling
 passport.use(google);
+passport.use(discord);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -86,6 +87,7 @@ app.get('/home', (req, res) => {
   res.render('home')
 })
 
+//setup google auth requests
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/auth/login'
 }),
@@ -94,6 +96,14 @@ app.get('/auth/google/callback',
   });
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })) 
+
+//setup discord auth requests
+app.get('/auth/discord', passport.authenticate('discord'));
+app.get('/auth/discord/callback', passport.authenticate('discord', {
+  failureRedirect: '/auth/login'
+}), function(req, res) {
+  res.render('components/callback') // Successful auth
+});
 
 //Registration system setup
 app.post('/register', register);
