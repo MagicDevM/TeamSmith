@@ -15,7 +15,7 @@ const { statusCodeHandler, notFoundHandler } = require('./middlewares/statusCode
 const { login, register, google } = require('./controllers/auth');
 
 //runtime imports
-require('./services/googleAuth')
+require('./services/authManager')
 
 //Router imports
 const auth = require('./routes/routers/auth');
