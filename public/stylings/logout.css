@@ -1,0 +1,29 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-family: 'poppins', Sans-Serif;
+  /* Prevents any scrolling issues */
+  box-sizing: border-box;
+  background-color: #101010;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.logoutButton {
+  height: 30px;
+  width: 100px;
+  background-color: deepskyblue;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}

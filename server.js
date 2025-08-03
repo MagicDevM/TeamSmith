@@ -13,6 +13,7 @@ const createTable = require('./utils/db/tables/createTable');
 const isAuth = require('./middlewares/isAuth');
 const { statusCodeHandler, notFoundHandler } = require('./middlewares/statusCodeHandler');
 const { login, register, google, discord } = require('./controllers/auth');
+const logout = require('./controllers/logout');
 
 //runtime imports
 require('./services/authManager')
@@ -76,17 +77,20 @@ createTable();
 //Route setup
 //Loads the Routes
 app.use('/home', isAuth)
+app.use('/logout', isAuth)
 app.use('/auth', auth)
 
 //route handling
 app.get('/', (req, res) => {
-  req.session.destroy();
   res.redirect('/home')
 })
 app.get('/home', (req, res) => {
   res.render('home')
 })
 
+app.get('/logout', (req, res) => {
+  res.render('logout')
+})
 //setup google auth requests
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/auth/login'
@@ -109,6 +113,8 @@ app.get('/auth/discord/callback', passport.authenticate('discord', {
 app.post('/register', register);
 
 app.post('/login', login)
+
+app.post('/logout', logout)
 
 //404 status code handling System
 app.use(notFoundHandler);
