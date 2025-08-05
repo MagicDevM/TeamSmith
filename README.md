@@ -1,4 +1,12 @@
-# TeamSmith
-Is a freelancing website developed by eluminusco
+# Magix Authentication
+Magix Authentication is a project made to make youre life easier when you want to add authentication to you're app this is made as an quick solution
 
-The main purpose of this website is to learn money by doing small jobs (used for donations for future projects)
+# Features
+- End to End Encrypted authentication
+- Login, Register, Google and Discord supported
+- Included with basic logout system
+- Lightweight
+- Fully customizable
+- 
+#Authors
+- MagicDevM
