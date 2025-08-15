@@ -7,7 +7,6 @@ Teamsmith is a modern way to add basic authentication in you're project made to 
 - Included with basic logout system(Passport logout system)
 - Lightweight(Better performance)
 - Fast & Secure(Database support)
-- Fully customizable(Config system)
 
 ## How to Install
 This is a step by step guide on how to Install teamsmith as a base
